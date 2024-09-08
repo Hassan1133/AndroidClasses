@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +41,8 @@ public class RecyclerAdp extends RecyclerView.Adapter<RecyclerAdp.Holder>{
 
         holder.userName.setText(user.getName());
         holder.userMsg.setText(user.getMsg());
+
+        setAnimationOnView(holder.itemView);
     }
 
     @Override
@@ -56,5 +60,11 @@ public class RecyclerAdp extends RecyclerView.Adapter<RecyclerAdp.Holder>{
             userName = itemView.findViewById(R.id.userName);
             userMsg = itemView.findViewById(R.id.userMsg);
         }
+    }
+
+    private void setAnimationOnView(View view)
+    {
+        Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+        view.startAnimation(animation);
     }
 }
